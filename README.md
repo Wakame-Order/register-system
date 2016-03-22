@@ -2,7 +2,6 @@
 動作環境 Mac OS 10.10/5
 言語 ruby 2.3.0 
 フレームワーク rails 4.2.2
-データベース sqlite3
 
 ```
 //関連するgemのinstall
