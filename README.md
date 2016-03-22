@@ -19,12 +19,18 @@ hello worldと表示されているのを確認する
 ##Scraping　Sample
 スクレイピングのコードを試したい場合は
 railsとは別に作成してあるrbファイルを実行する
-
+###準備
+account.ymlの更新
 ```account.yml
 account:
   id : "自分のアカウント"
   password: "自分のパスワード"
-
+```
+###webkit driverのinstall
+Macの場合
+```
+brew update
+brew install qt
 ```
 ```
 ruby su_time_table.rb
