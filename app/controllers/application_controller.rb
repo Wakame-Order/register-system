@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def hello
-    render text: "hello world"
+  private 
+  def set_task
+    @user = User.find(params[:id])
   end
 end
