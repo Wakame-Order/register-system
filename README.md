@@ -13,5 +13,8 @@ rails server
 http://localhost:3000
 にアクセスする
 
-hello worldと表示されているのを確認する
-
+方針
+jsonを返してほしい場合は
+endpointに
+/*.json
+とすることでjsonを返す

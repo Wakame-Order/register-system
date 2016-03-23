@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user_id %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <strong>Status flag:</strong>
+  <%= @profile.status_flag %>
+</p>
+
+<p>
+  <strong>Enter year:</strong>
+  <%= @profile.enter_year %>
+</p>
+
+<p>
+  <strong>Major:</strong>
+  <%= @profile.major %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
