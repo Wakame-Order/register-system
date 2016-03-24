@@ -62,6 +62,10 @@ class FriendsController < ApplicationController
     end
   end
 
+  def create_friend
+    @friend = Frined.find(params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
