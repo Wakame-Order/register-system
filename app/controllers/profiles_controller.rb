@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    set_own_profile
+    set_user_profile
   end
 
   # GET /profiles/new
@@ -68,7 +68,7 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
-    def set_own_profile
+    def set_user_profile
       @profile = Profile.find(params[:user_id])
     end
 
