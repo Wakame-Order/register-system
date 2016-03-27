@@ -39,6 +39,7 @@ gem 'capybara-webkit'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'hirb'
