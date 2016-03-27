@@ -6,15 +6,17 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     redirect_to 
   end
-end
 
-def find_or_creare(account, password)
-  User.find_or_create_by(account: account, password: password ) do |user|
-    user.account = account
-    user.password = password
+  def find_or_creare(account, password)
+    User.find_or_create_by(account: account, password: password ) do |user|
+      user.account = account
+      user.password = password
+    end
+  end
+
+  def fetch_date
+    Scraper::BasicScraper::url
+    render text: 'hello'
   end
 end
 
-def success_login?
-
-end

@@ -1,7 +1,7 @@
 module Scraper
   class BasicScraper
-    def url
-
+    def self.url
+      puts "hello scraper"
     end
 
     def extract
