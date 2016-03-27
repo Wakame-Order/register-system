@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :friends
 
-  resources :users
+  resources :users do
+    resources :friends
+
+    resource :profile
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,7 +19,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   # get 'users/:id' => 'user#show'
-  resources :users, :only => 'show'
 
 
   # Example of regular route:
