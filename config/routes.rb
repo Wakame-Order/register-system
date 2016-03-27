@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root "sessions#fetch_date"
   resources :klasses
 
   resources :time_tables
