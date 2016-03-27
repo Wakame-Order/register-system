@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def fetch_date
-    Scraper::BasicScraper::url
+    time_table = Scraper::TimeTableScraper.new
+    time_table.fetch_time_table
     render text: 'hello'
   end
 end
