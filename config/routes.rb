@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  root "sessions#fetch_date"
+
+  get '/login' => "sessions#login"
+  post '/login' => "sessions#main"
+  get '/register' => "sessions#index"
+  post '/register' => "sessions#create"
   resources :klasses
 
   resources :time_tables
