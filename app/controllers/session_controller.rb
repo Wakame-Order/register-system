@@ -13,7 +13,7 @@ class SessionController < ApplicationController
       return
     end
     session[:user_id] = @user.id
-    flash_message ="ログインしました"
+    flash_message ="すでにログインしています"
     redirect_to "/me", notice: flash_message
   end
 
