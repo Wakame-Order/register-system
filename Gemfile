@@ -44,7 +44,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'hirb'
   gem 'hirb-unicode'
-  # gem 'better_errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rails-erd'
 end
