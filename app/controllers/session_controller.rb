@@ -1,7 +1,11 @@
 class SessionController < ApplicationController
 
   def login
-    render :login
+    if signed_in?
+      redirect_to "/me"
+    else
+      render :login
+    end
   end
 
   def main
