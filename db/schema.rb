@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323070618) do
+ActiveRecord::Schema.define(version: 20160329065543) do
 
   create_table "friends", force: true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160323070618) do
     t.string   "major"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "grade"
   end
 
   create_table "time_tables", force: true do |t|

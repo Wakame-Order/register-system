@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+
+  get '/login' => "session#login"
+  post '/login' => "session#main"
+  get '/register' => "session#index"
+  post '/register' => "session#create"
+  get '/me' => "time_tables#me"
   resources :klasses
 
   resources :time_tables

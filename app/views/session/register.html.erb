@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- This site was created in Webflow. http://www.webflow.com-->
+<!-- Last Published: Mon Mar 28 2016 09:11:12 GMT+0000 (UTC) -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>register-machine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Webflow">
+    <link rel="stylesheet" type="text/css" href="https://daks2k3a4ib2z.cloudfront.net/56f8b9a9c505ae3308566645/css/register-machine-login.webflow.5751b9ab6.css">
+    <script type="text/javascript" src="https://daks2k3a4ib2z.cloudfront.net/0globals/modernizr-2.7.1.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png">
+</head>
+
+<body>
+  <div class="w-section section1">
+    <div class="w-container container1">
+      <h2>新規登録</h2>
+      <% if flash[:notice] %>
+        <div class="alert alert-danger">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <%= form_tag({ controller: :session, action: :create}) do %>
+        <label for="ID">学籍番号</label>
+        <%= text_field :session,:account , size:30, class: "w-input", required:"required"  %>
+        <label>パスワード</label>
+        <%= password_field :session, :password,class:"w-input" %>
+        <label>性別</label>
+        <div class="w-radio button1">
+          <label for="male" class="w-form-label">男</label>
+          <%= radio_button :session, :gender, 'male', {} %>
+          <label for="female" class="w-form-label">女</label>
+          <%= radio_button :session, :gender, 'female', {} %>
+        </div>
+        <div>
+          <label for="field">学年</label>
+          <%= select :session, :grade, [["学年を選んでください", "0"],["1年", "1"], ["2年", "2"],["3年", "3"],["4年", "4"]],{},{ class: "w-select"} %>
+        </div>
+        <div>
+          <%= submit_tag '登録', class:"w-button"  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
+
+</html>

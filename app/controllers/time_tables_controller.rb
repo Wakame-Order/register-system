@@ -21,6 +21,13 @@ class TimeTablesController < ApplicationController
   def edit
   end
 
+  def me
+    if session[:user_id]
+      # render json: User.find(session[:user_id])
+      render :me
+    end
+  end
+
   # POST /time_tables
   # POST /time_tables.json
   def create
