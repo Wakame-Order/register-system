@@ -36,6 +36,7 @@ class SessionController < ApplicationController
      profile = Profile.create(user_profile_params)
      if profile.present?
        @user.profile = profile
+       #TODO ここではerrorを引き起こさずにvalidアカウントかどうかを確かめたい
        time_table = fetch_data
        if !time_table.present?
          time_table ={error: "あなたの時間割には何も登録されていません"}
@@ -60,4 +61,3 @@ class SessionController < ApplicationController
     params.require(:session).permit(:gender, :grade)
   end
 end
-
