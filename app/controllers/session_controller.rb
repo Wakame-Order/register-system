@@ -31,13 +31,16 @@ class SessionController < ApplicationController
       redirect_to "/me", notice: flash_message
       return
     end
-   @user = User.create(session_params)
+   @user = User.create session_params
    if @user.present?
      profile = Profile.create(user_profile_params)
      if profile.present?
        @user.profile = profile
-       fetch_data
-       render text: "success create" 
+       time_table = fetch_data
+       if !time_table.present?
+         time_table ={error: "あなたの時間割には何も登録されていません"}
+       end
+       render json:  time_table
      end
    end
   end
@@ -45,7 +48,7 @@ class SessionController < ApplicationController
   private
 
   def fetch_data
-    time_table = Scraper::TimeTableScraper.new
+    time_table = Scraper::TimeTableScraper.new(session_params)
     time_table.fetch_time_table
   end
 

@@ -1,6 +1,6 @@
 module Scraper
   class  TimeTableScraper 
-    def initialize
+    def initialize login_params
       @time_table = {
         Mon:{
           mon1: "#ctl00_phContents_rrMain_ttTable_lctMon1_ctl00_lblSbjName",
@@ -49,7 +49,7 @@ module Scraper
         }
       }
        @url = "https://risyu.saitama-u.ac.jp/portal/"
-       @account = Rails.application.secrets.account
+       @account = login_params
     end
 
 
@@ -58,20 +58,23 @@ module Scraper
        @session = Capybara::Session.new(:webkit)
     end
 
+
     def fetch_time_table
       self.set_session
       @session.visit @url
-      @session.fill_in 'txtID',    with: @account["id"] 
-      @session.fill_in 'txtPassWord', with: @account["password"] 
+      @session.fill_in 'txtID',    with: @account[:account] 
+      @session.fill_in 'txtPassWord', with: @account[:password] 
       @session.click_button 'ログイン'
       @session.click_on '履修・成績情報'
       @session.click_on '履修時間割表'
+      @result = [] 
       # ここでデータの永続化にかんする処理を行う 
       @time_table.each_value do |date|
         date.each_value do |unit|
-          puts @session.find(unit).text
+          @result =  @session.find(unit).text
         end
       end
+      @result
     end
   end
 end
