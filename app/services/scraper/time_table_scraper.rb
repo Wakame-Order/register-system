@@ -1,6 +1,6 @@
 module Scraper
-  class  TimeTableScraper < BasicScraper
-    def url(url= "https://risyu.saitama-u.ac.jp/portal/")
+  class  TimeTableScraper 
+    def initialize
       @time_table = {
         Mon:{
           mon1: "#ctl00_phContents_rrMain_ttTable_lctMon1_ctl00_lblSbjName",
@@ -48,21 +48,17 @@ module Scraper
           fri7: "#ctl00_phContents_rrMain_ttTable_lctFri7_ctl00_lblSbjName",
         }
       }
-       @url = url
+       @url = "https://risyu.saitama-u.ac.jp/portal/"
+       @account = Rails.application.secrets.account
     end
 
-    def load_account
-      @account = Rails.application.secrets.account
-    end
 
     def set_session
-      Capybara.javascript_driver = :webkit
-      @session = Capybara::Session.new(:webkit)
+       Capybara.javascript_driver = :webkit
+       @session = Capybara::Session.new(:webkit)
     end
 
     def fetch_time_table
-      self.url
-      self.load_account
       self.set_session
       @session.visit @url
       @session.fill_in 'txtID',    with: @account["id"] 

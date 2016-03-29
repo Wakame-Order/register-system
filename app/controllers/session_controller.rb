@@ -1,0 +1,60 @@
+class SessionController < ApplicationController
+
+  def login
+    render :login
+  end
+
+  def main
+    @user = User.find_by session_params
+    if !@user.present?
+      flash_message = "ログインに失敗しました"
+      puts '//////////////////////////'
+      redirect_to "/login", notice: flash_message
+      return
+    end
+    session[:user_id] = @user.id
+    flash_message ="ログインしました"
+    redirect_to "/me", notice: flash_message
+  end
+
+  def index
+    render :register
+  end
+
+  def create
+    account = params[:account]
+    password = params[:password]
+    #ここですでに存在しているユーザかどうかチェック
+    @user = User.find_by account: account, password: password
+    if @user.present?
+      flash_message = "#{account}はすでに存在しています"
+      redirect_to "/me", notice: flash_message
+      return
+    end
+   @user = User.create(session_params)
+   if @user.present?
+     profile = Profile.create(user_profile_params)
+     if profile.present?
+       @user.profile = profile
+       fetch_data
+       render text: "success create" 
+     end
+   end
+  end
+
+  private
+
+  def fetch_data
+    time_table = Scraper::TimeTableScraper.new
+    time_table.fetch_time_table
+  end
+
+  def session_params
+    params.require(:session).permit(:account, :password)
+  end
+
+  def user_profile_params
+    params.require(:session).permit(:gender, :grade)
+  end
+end
+
