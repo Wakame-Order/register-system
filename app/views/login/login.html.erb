@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
 <!-- Last Published: Mon Mar 28 2016 09:11:12 GMT+0000 (UTC) -->
@@ -25,13 +26,13 @@
           </div>
         <% end %>
         <div class="w-form form-wrapper">
-          <%= form_tag({ controller: :session, action: :main}) do %>
+          <%= form_tag({ controller: :login, action: :login}) do %>
 
             <h2>ログイン</h2>
             <label for="ID">学籍番号</label>
-            <%= text_field :session,:account , size:30, class: "w-input", required:"required"  %>
+            <%= text_field :login,:account , size:30, class: "w-input", required:"required"  %>
             <label for="pass">パスワード</label>
-            <%= password_field :session, :password,class:"w-input" %>
+            <%= password_field :login, :password,class:"w-input" %>
             <%= submit_tag 'ログイン', class:"w-button"  %>
             <div class="w-form-done">
               <p>ログインに成功しました</p>

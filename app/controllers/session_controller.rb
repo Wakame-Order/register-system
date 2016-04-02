@@ -47,7 +47,6 @@ class SessionController < ApplicationController
   end
 
   def prohibit_singined_in_user
-    binding.pry
     if user_signed_in?
       redirect_to session[:past_url]
     else

@@ -22,8 +22,7 @@ class TimeTablesController < ApplicationController
   end
 
   def me
-    if session[:user_id]
-      # render json: User.find(session[:user_id])
+    if user_signed_in?
       render :me
     end
   end
