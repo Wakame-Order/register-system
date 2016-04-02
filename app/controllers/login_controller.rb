@@ -1,16 +1,15 @@
 class LoginController < ApplicationController
 
+  before_action :prohibit_singined_in_user, only: [:index, :login]
+  def index
+    render :login
+  end
 
-  #TODO ログインメインロジック
   def login
-    if user_signed_in? 
-      #TODO top　ページの戻る仕組み
-    else
-      #TODO loginページへの遷移を促す
-    end
-    if registered_user?(user_params)
-      #userがログインしているかは
-      user_session(set_user(user_params))
+    login_params = user_params
+    if registered_user?(login_params[:account], login_params[:password])
+      session[:user_id] = @user.id
+      redirect_to :me 
     end
   end
 
@@ -18,16 +17,20 @@ class LoginController < ApplicationController
     if user_signed_in?
       session.delete(:user_id)
     end
+    redirect_to :login
   end
 
   private 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def set_user account, password
-    user = User.find_by(:account, :password)
-  end
 
   def user_params
-    params.require(:session).permit(:account, :password)
+    params.require(:login).permit(:account, :password)
   end
 
+  def prohibit_singined_in_user
+    if user_signed_in?
+      redirect_to session[:past_url]
+    else
+      render :login
+    end
+  end
 end
