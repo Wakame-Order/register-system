@@ -6,6 +6,7 @@ class SessionController < ApplicationController
     # else
     #   render :login
     # end
+    # ログインした時に時間割のテーブルを取得してくる
     render :login
   end
 
