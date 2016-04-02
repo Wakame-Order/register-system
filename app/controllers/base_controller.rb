@@ -4,6 +4,8 @@ class BaseController < ActionController::Base
   before_action :set_user
   before_action :past_url 
 
+  protected 
+
   def user_signed_in?
     session[:user_id].present?
   end
