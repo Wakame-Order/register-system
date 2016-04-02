@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
 
 
-  get '/login' => "session#login"
-  post '/login' => "session#main"
+  get '/login' => "login#index"
+  post '/login' => "login#login"
+  get '/logout' => "login#logout"
+
   get '/register' => "session#index"
   post '/register' => "session#create"
+
   get '/me' => "time_tables#me"
-  resources :klasses
+  # resources :klasses
 
-  resources :time_tables
+  # resources :time_tables
 
-  resources :profiles
+  # resources :profiles
 
-  resources :friends
+  # resources :friends
 
-  resources :users do
-    resources :friends
+  # resources :users do
+  #   resources :friends
 
-    resource :profile
-  end
+  #   resource :profile
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,6 +1,8 @@
 module Scraper
   class  TimeTableScraper 
     def initialize login_params
+      @url = "https://risyu.saitama-u.ac.jp/portal/"
+      @account = login_params
       @time_table = {
         Mon:{
           mon1: "#ctl00_phContents_rrMain_ttTable_lctMon1_ctl00_lblSbjName",
@@ -48,15 +50,9 @@ module Scraper
           fri7: "#ctl00_phContents_rrMain_ttTable_lctFri7_ctl00_lblSbjName",
         }
       }
-       @url = "https://risyu.saitama-u.ac.jp/portal/"
-       @account = login_params
     end
 
 
-    def set_session
-       Capybara.javascript_driver = :webkit
-       @session = Capybara::Session.new(:webkit)
-    end
 
 
     def fetch_time_table
@@ -75,6 +71,12 @@ module Scraper
         end
       end
       @result
+    end
+
+    private
+    def set_session
+       Capybara.javascript_driver = :webkit
+       @session = Capybara::Session.new(:webkit)
     end
   end
 end
