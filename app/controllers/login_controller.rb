@@ -6,5 +6,4 @@ class LoginController < ApplicationController
     #ログインと
   end
 
-  def 
 end
