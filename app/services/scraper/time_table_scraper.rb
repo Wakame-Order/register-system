@@ -53,10 +53,6 @@ module Scraper
     end
 
 
-    def set_session
-       Capybara.javascript_driver = :webkit
-       @session = Capybara::Session.new(:webkit)
-    end
 
 
     def fetch_time_table
@@ -75,6 +71,12 @@ module Scraper
         end
       end
       @result
+    end
+
+    private
+    def set_session
+       Capybara.javascript_driver = :webkit
+       @session = Capybara::Session.new(:webkit)
     end
   end
 end
