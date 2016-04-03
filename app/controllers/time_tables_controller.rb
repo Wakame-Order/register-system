@@ -1,4 +1,5 @@
 class TimeTablesController < ApplicationController
+  include ScrapingConcerns
   before_action :set_time_table, only: [:show, :edit, :update, :destroy]
 
   # GET /time_tables

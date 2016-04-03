@@ -1,0 +1,2 @@
+module ScrapingConcerns
+end
